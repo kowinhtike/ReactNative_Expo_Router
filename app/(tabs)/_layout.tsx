@@ -1,37 +1,27 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { StyleSheet, Text, View} from 'react-native'
+import React from 'react'
+import { Tabs } from 'expo-router'
+import { TabBarIcon } from '@/components/navigation/TabBarIcon'
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const TabsLayout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
+    //to replace more icons  visit this website https://ionic.io/ionicons
+    <Tabs>
+        <Tabs.Screen name='index' options={{headerTitle:"Home Page",headerStyle:{backgroundColor:"red"},headerTitleStyle:{
+            color:"white"
+        },title:"Home",tabBarIcon:({ color, focused }) => (
+          <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+        )}} />
+        <Tabs.Screen name='users/[id]' options={{headerTitle:"User Page",headerStyle:{backgroundColor:"red"},headerTitleStyle:{
+            color:"white"
+        },title:"User Page Naw",tabBarIcon:({ color, focused }) => (
+          <TabBarIcon name={focused ? 'person-circle' : 'person-circle-outline'} color={color} />
+        )}} />
     </Tabs>
-  );
+    
+  )
 }
+
+export default TabsLayout
+
+const styles = StyleSheet.create({})
